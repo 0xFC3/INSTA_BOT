@@ -5,9 +5,16 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains 
 import time
 
-chrome_options = Options().add_experimental_option("detach", True)
+## lesen welches operating system und dann entsprechender driver
+## wichtig du musst dir ein txt file mit dem name operating_system anlegen und windows reinschreiben
+f = open('operating_system.txt', 'r')
+t = f.readline().replace('\n', '')
+f.close()
 
-browser = webdriver.Chrome('./chromedriver.exe')
+if t == 'windows': 
+    browser = webdriver.Chrome('./chromedriver.exe')
+if str(t) == 'linux':
+    browser = webdriver.Chrome('./chromedriver')
 
 # browser.get('http://www.instagram.com')
 browser.get('https://hammerjs.github.io/')
